@@ -1,0 +1,16 @@
+{
+  "short_name": "BridgeIA",
+  "name": "BridgeIA - Gerenciador de Contexto",
+  "icons": [
+    {
+      "src": "https://flaticon.com",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html",
+  "background_color": "#0f141c",
+  "theme_color": "#818cf8",
+  "display": "standalone",
+  "orientation": "portrait"
+}

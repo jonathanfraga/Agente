@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace de Contexto IA</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-container">
+        <header>
+            <h1>BridgeIA - Gerenciador de Contexto</h1>
+            <p>Contorne o limite de caracteres transmitindo arquivos estruturados.</p>
+        </header>
+
+        <!-- Seção de Leitura de Projetos -->
+        <section class="card">
+            <h2>1. Mapear Projeto Local</h2>
+            <div class="row">
+                <button id="btn-select-folder" class="btn-primary">Selecionar Pasta Raiz</button>
+                <span id="folder-path" class="status-text">Nenhuma pasta selecionada</span>
+            </div>
+            <div class="file-tree-container">
+                <ul id="file-list-tree" class="file-tree"></ul>
+            </div>
+        </section>
+
+        <!-- Seção de Transmissão (Envio para a IA) -->
+        <section class="card">
+            <h2>2. Transmissão para o Chat (Saída)</h2>
+            <div class="row">
+                <button id="btn-generate-blocks" class="btn-secondary" disabled>Gerar Blocos de Contexto</button>
+                <span id="block-info" class="status-text">Aguardando mapeamento...</span>
+            </div>
+            <div class="output-area">
+                <div class="pagination" id="block-pagination"></div>
+                <textarea id="txt-ia-output" readonly placeholder="Os blocos de texto formatados para colar no chat aparecerão aqui..."></textarea>
+                <button id="btn-copy-block" class="btn-success" disabled>Copiar Bloco Atual</button>
+            </div>
+        </section>
+
+        <!-- Seção de Recepção (O que a IA responde) -->
+        <section class="card">
+            <h2>3. Receptor de Respostas da IA (Entrada)</h2>
+            <p>Cole aqui a resposta gerada pela IA para que a ferramenta aplique as modificações direto nos arquivos:</p>
+            <textarea id="txt-ia-input" placeholder="Cole aqui o bloco de resposta da IA..."></textarea>
+            <button id="btn-apply-changes" class="btn-danger" disabled>Processar e Gravar Alterações</button>
+        </section>
+    </main>
+
+    <!-- Importação dos módulos JavaScript usando Type="module" -->
+    <script type="module" src="app.js"></script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+  </script>
+
+</body>
+</html>

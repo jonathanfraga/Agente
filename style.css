@@ -1,0 +1,217 @@
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================================================== */
+:root {
+    --bg-main: #0f141c;
+    --bg-card: #171d26;
+    --bg-input: #0b0e14;
+    
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    
+    --color-primary: #818cf8;    /* Roxo/Azul para ações principais */
+    --color-secondary: #38bdf8;  /* Ciano para blocos e paginação */
+    --color-success: #34d399;    /* Verde para copiar */
+    --color-danger: #f87171;     /* Vermelho para gravar arquivos */
+    
+    --border-color: #2d3748;
+    --radius: 8px;
+    --transition: all 0.2s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.5;
+    padding: 40px 20px;
+}
+
+/* ==========================================================================
+   LAYOUT E ESTRUTURA
+   ========================================================================== */
+.app-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Painéis (Cards) de cada etapa */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    color: var(--text-main);
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Alinhamento de botões e status */
+.row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.status-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-family: monospace;
+    background-color: var(--bg-input);
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   ELEMENTOS DE FORMULÁRIO E ENTRADA
+   ========================================================================== */
+textarea {
+    width: 100%;
+    height: 160px;
+    background-color: var(--bg-input);
+    color: #a6e3a1; /* Texto verde estilo terminal para o código */
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 12px;
+    font-family: "Fira Code", Consolas, Monaco, monospace;
+    font-size: 0.85rem;
+    resize: vertical;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: var(--color-primary);
+}
+
+textarea::placeholder {
+    color: #4b5563;
+}
+
+/* Botões Customizados */
+button {
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:disabled {
+    background-color: #2d3748 !important;
+    color: #718096 !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-primary { background-color: var(--color-primary); color: #0f141c; }
+.btn-primary:hover:not(:disabled) { filter: brightness(1.1); }
+
+.btn-secondary { background-color: var(--color-secondary); color: #0f141c; }
+.btn-secondary:hover:not(:disabled) { filter: brightness(1.1); }
+
+.btn-success { background-color: var(--color-success); color: #0f141c; }
+.btn-success:hover:not(:disabled) { filter: brightness(1.1); }
+
+.btn-danger { background-color: var(--color-danger); color: #0f141c; }
+.btn-danger:hover:not(:disabled) { filter: brightness(1.1); }
+
+/* ==========================================================================
+   COMPONENTES ESPECÍFICOS (Árvore de arquivos e Paginação)
+   ========================================================================== */
+/* Container da lista de arquivos mapeados */
+.file-tree-container {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    max-height: 180px;
+    overflow-y: auto;
+    padding: 12px;
+}
+
+.file-tree {
+    list-style: none;
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+
+.file-tree li {
+    padding: 4px 0;
+    color: var(--text-muted);
+}
+
+/* Área de saída com os blocos da IA */
+.output-area {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Paginação por botões numéricos (ex: [1] [2] [3]) */
+.pagination {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.page-chip {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.page-chip.active {
+    background-color: var(--color-secondary);
+    color: #0f141c;
+    border-color: var(--color-secondary);
+}
